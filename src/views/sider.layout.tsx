@@ -6,12 +6,15 @@ import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { LAYOUT_WIDTH } from "./default.layout";
 
-const SiderWidth = 200;
+const SiderWidth = 275;
 
 const CustomSilderLayout = () => {
   const winSizeX = useRecoilValue(RecoilResizeState);
   const [collapsed, setCollapsed] = React.useState<boolean>(false);
-  const [drawOpen, setDrawOpen] = React.useState<boolean>(false);
+  const [drawOpen, setDrawOpen] = React.useState<boolean>(true);
+  const onClose = () => {
+    setDrawOpen(false);
+  };
   React.useEffect(() => {
     setCollapsed(winSizeX < LAYOUT_WIDTH.HDP);
   }, [winSizeX]);
@@ -20,14 +23,17 @@ const CustomSilderLayout = () => {
     <>
       <LocalSliderLayoutStyle
         width={SiderWidth}
-        collapsed={collapsed}
+        collapsed={collapsed && !drawOpen}
         collapsedWidth={0}
-      >
-        <MenuMainComponent />
-      </LocalSliderLayoutStyle>
+      ></LocalSliderLayoutStyle>
       <Drawer
-        open={drawOpen}
+        open={!collapsed || drawOpen}
+        mask={collapsed}
+        bodyStyle={{ padding: 0, margin: 0 }}
         closable={false}
+        onClose={() => {
+          if (collapsed) onClose();
+        }}
         placement={"left"}
         width={SiderWidth}
       >
@@ -41,6 +47,6 @@ export default React.memo(CustomSilderLayout);
 const LocalSliderLayoutStyle = styled(Layout.Sider)`
   min-height: 100%;
   max-height: 100%;
-  background-color: white !important;
-  box-shadow: -5px 0px 8px rgba(12, 12, 12, 0.5);
+
+  opacity: 0 !important;
 `;

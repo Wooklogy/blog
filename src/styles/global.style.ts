@@ -4,19 +4,51 @@ export const translatePxValue = (val: string | number | undefined) => {
   const result = typeof val === "number" ? `${val}px` : val;
   return result;
 };
+// weight 단위 변경
+export const translateWeightValue = (val: string | number | undefined) => {
+  if (val === undefined || val === null) return;
+  if (typeof val === "number") {
+    return val;
+  } else {
+    switch (String(val).toLowerCase()) {
+      case "thin":
+        return 100;
+      case "light":
+        return 300;
+      case "regular":
+        return 400;
+      case "medium":
+        return 500;
+      case "bold":
+        return 700;
+      case "black":
+        return 900;
+    }
+  }
+  const result = typeof val === "number" ? `${val}px` : val;
+  return result;
+};
+// basePath prefix하여 path 생성
+export const createPublicPath = (path: string) => {
+  return `/blog/${path}`;
+};
+
 export interface AppThemeProps {
   color: {
-    primary?: string;
-    primary_alpha?: string;
-    // text and default
-    text?: string;
+    primary: string;
+    primary_second: string;
+    primary_alpha: string;
+    primary_second_alpha: string;
     text_second: string;
     text_third: string;
     white: string;
-    black: string;
+    text: string;
+    text_bold: string;
+    text_link: string;
+    divider: string;
     success: string;
     error: string;
-    placehoder: string;
+    warn: string;
   };
   font_size: {
     ti: string;
@@ -29,19 +61,27 @@ export interface AppThemeProps {
     abstract: string;
     title: string;
   };
+  box: {
+    border_radius: number;
+    shadow: string;
+  };
 }
 export const AppTheme: AppThemeProps = {
   color: {
-    primary: "#7346F3",
-    primary_alpha: "rgba(115, 70, 243,0.5)",
-    text: "#4E4E4E",
-    text_second: "#A5A5A5",
-    text_third: "#D9D9D9",
-    white: "#FFFFFF",
-    black: "#000000",
-    success: "#39CF48",
-    error: "#F15555",
-    placehoder: "#828282",
+    primary: "#FFC022",
+    primary_second: "#C936BA",
+    primary_alpha: "rgba(255,192,34,0.2)",
+    primary_second_alpha: "rgba(201,54,186,0.2)",
+    white: "#dddddd",
+    text: "#161616",
+    text_second: "#BBBBBB",
+    text_third: "#F2F2F2",
+    text_bold: "#000000",
+    text_link: "#FFC022",
+    divider: "#F2F2F2",
+    success: "#4BB543",
+    error: "#FF3333",
+    warn: "#FFCC00",
   },
   font_size: {
     ti: "0.75rem",
@@ -53,5 +93,9 @@ export const AppTheme: AppThemeProps = {
     xxxl: "2.75rem",
     abstract: "2.5rem",
     title: "3rem",
+  },
+  box: {
+    border_radius: 12,
+    shadow: `0px 4px 8px rgba(0, 0, 0, 0.25)`,
   },
 };

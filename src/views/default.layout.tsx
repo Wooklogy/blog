@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { RecoilResizeState, RecoilScrollState } from "@/states/state.config";
-import { Layout } from "antd";
+import { Layout, LayoutProps } from "antd";
 import React, { PropsWithChildren } from "react";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import CustomSilderLayout from "./sider.layout";
-const DefaultLayout: React.FC<PropsWithChildren> = ({ children }) => {
+const DefaultLayout: React.FC<PropsWithChildren<LayoutProps>> = (props) => {
+  const { children } = props;
   const [, setResize] = useRecoilState(RecoilResizeState);
   const [, setScrollY] = useRecoilState(RecoilScrollState);
 
@@ -51,7 +52,7 @@ const DefaultLayout: React.FC<PropsWithChildren> = ({ children }) => {
     };
   }, []);
   return (
-    <LocalMainLayout>
+    <LocalMainLayout {...props}>
       <CustomSilderLayout></CustomSilderLayout>
       <Layout>
         <LocalHeaderLayout></LocalHeaderLayout>
@@ -64,6 +65,7 @@ export default DefaultLayout;
 
 const LocalMainLayout = styled(Layout)`
   min-height: 100vh;
+  font-family: "Noto Sans KR", sans-serif;
 `;
 const LocalHeaderLayout = styled(Layout.Header)``;
 const LocalContentLayout = styled(Layout.Content)``;
