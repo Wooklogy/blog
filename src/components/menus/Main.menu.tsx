@@ -47,31 +47,31 @@ const MenuMainComponent = () => {
     },
     {
       label: "Dev Ops",
-      key: "develop",
+      key: "Dev Ops",
       type: "group",
       children: [
         {
           label: "Some thing",
-          key: "1",
+          key: "Dev Ops1",
           children: [
             {
               label: "장현욱",
-              key: "짱짱맨",
+              key: "Dev Ops짱짱맨",
             },
             {
               label: "현욱짱",
-              key: "짱맨",
+              key: "Dev Ops짱맨",
             },
           ],
         },
 
         {
           label: "Some thing",
-          key: "2",
+          key: "Dev Ops2",
         },
         {
           label: "Some thing",
-          key: "3",
+          key: "Dev Ops3",
         },
       ],
     },

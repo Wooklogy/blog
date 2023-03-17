@@ -76,9 +76,37 @@ const CustomMenuGroup = styled(Menu.ItemGroup)`
 const CustomSubMenu = styled(Menu.SubMenu)`
   font-size: 14px;
   font-weight: 500;
-  &.ant-menu-submenu-selected > .ant-menu-submenu-title {
-    color: ${AppTheme.color.primary_second};
-    background-color: ${AppTheme.color.primary_second_alpha};
+  & > .ant-menu-submenu-title {
+    color: ${AppTheme.color.sider};
+    & > svg {
+      color: ${AppTheme.color.text_second};
+    }
+  }
+  ::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid ${AppTheme.color.primary};
+    transform: translateX(-100%);
+  }
+  &.ant-menu-submenu-selected > .ant-menu-submenu-title,
+  &.ant-menu-submenu-active > .ant-menu-submenu-title {
+    color: ${AppTheme.color.primary_second} !important;
+    background-color: ${AppTheme.color.primary_second_alpha} !important;
+    svg {
+      color: ${AppTheme.color.primary_second};
+    }
+  }
+  /* hover */
+  &.ant-menu-submenu-active > .ant-menu-submenu-title {
+    ::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-bottom: 1px solid ${AppTheme.color.primary};
+    }
   }
   .menu-icon {
     border-radius: 50%;
@@ -88,8 +116,5 @@ const CustomSubMenu = styled(Menu.SubMenu)`
     width: 30px;
     height: 30px;
     background-color: rgba(230, 230, 230, 0.25);
-    & > svg {
-      color: ${AppTheme.color.text_second};
-    }
   }
 `;

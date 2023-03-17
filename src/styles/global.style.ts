@@ -49,6 +49,7 @@ export interface AppThemeProps {
     success: string;
     error: string;
     warn: string;
+    sider: string;
   };
   font_size: {
     ti: string;
@@ -73,7 +74,7 @@ export const AppTheme: AppThemeProps = {
     primary_alpha: "rgba(255,192,34,0.2)",
     primary_second_alpha: "rgba(201,54,186,0.2)",
     white: "#dddddd",
-    text: "#161616",
+    text: "#4E4E4E",
     text_second: "#BBBBBB",
     text_third: "#F2F2F2",
     text_bold: "#000000",
@@ -82,6 +83,7 @@ export const AppTheme: AppThemeProps = {
     success: "#4BB543",
     error: "#FF3333",
     warn: "#FFCC00",
+    sider: "#A6A6A6",
   },
   font_size: {
     ti: "0.75rem",
