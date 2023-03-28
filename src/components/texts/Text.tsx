@@ -33,7 +33,8 @@ const CustomText: React.FC<PropsWithChildren<CustomTextProps>> = (props) => {
 export default CustomText;
 
 const CustomTextStyle = styled.span<CustomTextProps>`
-  font-family: ${(props) => props.font_family};
+  font-family: ${(props) =>
+    props.font_family || `'IBM Plex Sans KR', sans-serif`};
 
   cursor: ${(props) => props?.cursor};
   width: ${(props) => props.width && translatePxValue(props.width)};

@@ -13,13 +13,7 @@ export default function Document() {
                 httpEquiv="Content-Security-Policy"
                 content="upgrade-insecure-requests"
               ></meta> */}
-        {/* 
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Poppins:wght@100;300;400;500;700;900&display=swap"
-                    rel="stylesheet"
-                /> */}
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -27,9 +21,9 @@ export default function Document() {
           crossOrigin=""
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap"
           rel="stylesheet"
-        ></link>
+        />
         <link rel="icon" href="blog/favicon.ico" />
       </Head>
       <body>

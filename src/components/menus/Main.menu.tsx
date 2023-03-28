@@ -1,8 +1,9 @@
 import { AppTheme, createPublicPath } from "@/styles/global.style";
-import { Image, Menu, MenuProps } from "antd";
+import { Divider, Image, Menu, MenuProps } from "antd";
 import React from "react";
+import { CgSmileNone } from "react-icons/cg";
 import styled from "styled-components";
-import IconToTextAnimation from "../animation/IconToText.animation";
+import IconToTextAnimation from "../animations/IconToText.animation";
 import CustomCol from "../grids/Col.grid";
 import CustomRow from "../grids/Row.grid";
 import SVGCat from "../svgs/Cat.svg";
@@ -10,7 +11,8 @@ import SVGHome from "../svgs/Home.svg";
 import SVGPortfolio from "../svgs/Portfolio";
 import CustomText from "../texts/Text";
 import CustomMenu, { CustomMenuItemProps } from "./Menu";
-
+import { motion } from "framer-motion";
+import CustomDivider from "../dividers/divider.comp";
 const PictrueSize = 98;
 
 const MenuMainComponent = () => {
@@ -22,11 +24,17 @@ const MenuMainComponent = () => {
       children: [
         {
           label: "Some thing",
-          key: "1",
+          key: "15363",
+          icon: (
+            <motion.div className="menu-icon">{<CgSmileNone />}</motion.div>
+          ),
           children: [
             {
               label: "장현욱",
               key: "짱짱맨",
+              icon: (
+                <motion.div className="menu-icon">{<CgSmileNone />}</motion.div>
+              ),
             },
             {
               label: "현욱짱",
@@ -47,31 +55,61 @@ const MenuMainComponent = () => {
     },
     {
       label: "Dev Ops",
-      key: "Dev Ops",
+      key: "develop!",
       type: "group",
       children: [
         {
           label: "Some thing",
-          key: "Dev Ops1",
+          key: "1!",
           children: [
             {
               label: "장현욱",
-              key: "Dev Ops짱짱맨",
+              key: "짱짱맨!",
             },
             {
               label: "현욱짱",
-              key: "Dev Ops짱맨",
+              key: "짱맨!",
             },
           ],
         },
 
         {
           label: "Some thing",
-          key: "Dev Ops2",
+          key: "2!",
         },
         {
           label: "Some thing",
-          key: "Dev Ops3",
+          key: "3!",
+        },
+      ],
+    },
+    {
+      label: "Dev Ops",
+      key: "develop!!",
+      type: "group",
+      children: [
+        {
+          label: "Some thing",
+          key: "1!!",
+          children: [
+            {
+              label: "장현욱",
+              key: "짱짱맨!!",
+            },
+            {
+              label: "현욱짱",
+              key: "짱맨!!",
+            },
+          ],
+        },
+
+        {
+          label: "Some thing",
+          key: "2!!",
+        },
+        {
+          label: "Some thing",
+          key: "3!!",
         },
       ],
     },
@@ -85,6 +123,7 @@ const MenuMainComponent = () => {
               src={createPublicPath("images/profileBack.jpg")}
               alt="profile_back_img"
               preview={false}
+              width={"100%"}
               loading="lazy"
             ></Image>
           </div>
@@ -127,7 +166,11 @@ const MenuMainComponent = () => {
         </div>
       </LocalProfileSection>
       <CustomCol span={24}>
-        <CustomMenu mode="inline" customItems={items}></CustomMenu>
+        <CustomMenu mode="inline" custom_items={items}></CustomMenu>
+      </CustomCol>
+      <CustomDivider className="margin-bottom-1"></CustomDivider>
+      <CustomCol className="margin-bottom-1 margin-left-2">
+        Design by Wology
       </CustomCol>
     </CustomRow>
   );

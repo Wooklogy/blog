@@ -86,18 +86,36 @@ export const AppTheme: AppThemeProps = {
     sider: "#A6A6A6",
   },
   font_size: {
-    ti: "0.75rem",
-    de: "1rem",
-    sm: "1.25rem",
-    lg: "1.725rem",
-    xl: "2rem",
-    xxl: "2.25rem",
-    xxxl: "2.75rem",
+    ti: "12px",
+    de: "14px",
+    sm: "16px",
+    lg: "20px",
+    xl: "24px",
+    xxl: "28px",
+    xxxl: "36px",
     abstract: "2.5rem",
-    title: "3rem",
+    title: "48px",
   },
   box: {
     border_radius: 12,
     shadow: `0px 4px 8px rgba(0, 0, 0, 0.25)`,
   },
+};
+export const AppResolution = [2560, 1440, 1024, 768, 600];
+export const ResoulutionReturner = (
+  windowWidth: number,
+  pc: any,
+  horizon_tablet: any,
+  tablet: any,
+  mobile: any
+) => {
+  return windowWidth >= AppResolution[2]
+    ? pc
+    : windowWidth < AppResolution[2] && windowWidth >= AppResolution[3]
+    ? horizon_tablet
+    : windowWidth < AppResolution[3] && windowWidth >= AppResolution[4]
+    ? tablet
+    : windowWidth < AppResolution[4]
+    ? mobile
+    : pc;
 };

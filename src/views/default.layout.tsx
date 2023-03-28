@@ -1,4 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import CustomRow from "@/components/grids/Row.grid";
+import MainHeader from "@/components/headers/Header";
 import { RecoilResizeState, RecoilScrollState } from "@/states/state.config";
 import { Layout, LayoutProps } from "antd";
 import React, { PropsWithChildren } from "react";
@@ -55,7 +57,9 @@ const DefaultLayout: React.FC<PropsWithChildren<LayoutProps>> = (props) => {
     <LocalMainLayout {...props}>
       <CustomSilderLayout></CustomSilderLayout>
       <Layout>
-        <LocalHeaderLayout></LocalHeaderLayout>
+        <LocalHeaderLayout>
+          <MainHeader></MainHeader>
+        </LocalHeaderLayout>
         <LocalContentLayout>{children}</LocalContentLayout>
       </Layout>
     </LocalMainLayout>
@@ -65,9 +69,14 @@ export default DefaultLayout;
 
 const LocalMainLayout = styled(Layout)`
   min-height: 100vh;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "IBM Plex Sans KR", sans-serif;
 `;
-const LocalHeaderLayout = styled(Layout.Header)``;
+const LocalHeaderLayout = styled(Layout.Header)`
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+`;
 const LocalContentLayout = styled(Layout.Content)``;
 
 export const LAYOUT_WIDTH = {

@@ -1,8 +1,8 @@
 import MenuMainComponent from "@/components/menus/Main.menu";
-import { RecoilResizeState } from "@/states/state.config";
+import { RecoilResizeState, SiderDrawState } from "@/states/state.config";
 import { Drawer, Layout } from "antd";
 import React from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { LAYOUT_WIDTH } from "./default.layout";
 
@@ -11,7 +11,7 @@ const SiderWidth = 275;
 const CustomSilderLayout = () => {
   const winSizeX = useRecoilValue(RecoilResizeState);
   const [collapsed, setCollapsed] = React.useState<boolean>(false);
-  const [drawOpen, setDrawOpen] = React.useState<boolean>(true);
+  const [drawOpen, setDrawOpen] = useRecoilState(SiderDrawState);
   const onClose = () => {
     setDrawOpen(false);
   };
@@ -23,7 +23,7 @@ const CustomSilderLayout = () => {
     <>
       <LocalSliderLayoutStyle
         width={SiderWidth}
-        collapsed={collapsed && !drawOpen}
+        collapsed={collapsed}
         collapsedWidth={0}
       ></LocalSliderLayoutStyle>
       <Drawer
